@@ -1,7 +1,7 @@
 /* Fonts */
 
-@import "/css/font/poppins.css";
-@import "/css/font/jetbrains.css";
-@import "/css/font/recursive.css";
+@import "./font/poppins.css";
+@import "./font/jetbrains.css";
+@import "./font/recursive.css";
 
 
