@@ -13,6 +13,8 @@ window.onload = function (ev) {
     connect(function () {
 
     })
+
+    analytics()
 }
 
 window.onclick = function (ev) {

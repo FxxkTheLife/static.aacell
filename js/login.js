@@ -2,6 +2,8 @@ window.onload = function () {
     add_textbox()
     request_admin_exists()
     document.getElementById('login-password-input').focus()
+
+    analytics()
 }
 
 function go_back() {

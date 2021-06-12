@@ -102,23 +102,23 @@ function update_battery_view() {
     if (battery >= 87.5) {
         document.getElementById('battery-status').style.backgroundColor = 'var(--clear-green)'
         document.getElementById('battery-status-value').style.color = 'var(--green)'
-        document.getElementById('battery-status-img').src = '/assets/room/battery-100.svg'
+        document.getElementById('battery-status-img').src = `${baseurl}/assets/room/battery-100.svg`
     } else if (battery >= 62.5) {
         document.getElementById('battery-status').style.backgroundColor = 'var(--clear-green)'
         document.getElementById('battery-status-value').style.color = 'var(--green)'
-        document.getElementById('battery-status-img').src = '/assets/room/battery-75.svg'
+        document.getElementById('battery-status-img').src = `${baseurl}/assets/room/battery-75.svg`
     } else if (battery >= 37.5) {
         document.getElementById('battery-status').style.backgroundColor = 'var(--clear-green)'
         document.getElementById('battery-status-value').style.color = 'var(--green)'
-        document.getElementById('battery-status-img').src = '/assets/room/battery-50.svg'
+        document.getElementById('battery-status-img').src = `${baseurl}/assets/room/battery-50.svg`
     } else if (battery >= 12.5) {
         document.getElementById('battery-status').style.backgroundColor = 'var(--clear-yellow)'
         document.getElementById('battery-status-value').style.color = 'var(--yellow)'
-        document.getElementById('battery-status-img').src = '/assets/room/battery-25.svg'
+        document.getElementById('battery-status-img').src = `${baseurl}/assets/room/battery-25.svg`
     } else {
         document.getElementById('battery-status').style.backgroundColor = 'var(--clear-red)'
         document.getElementById('battery-status-value').style.color = 'var(--red)'
-        document.getElementById('battery-status-img').src = '/assets/room/battery-0.svg'
+        document.getElementById('battery-status-img').src = `${baseurl}/assets/room/battery-0.svg`
     }
     if (battery <= 0) {
         ws_disconnect()

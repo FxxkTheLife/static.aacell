@@ -1,8 +1,8 @@
 
 let ws_status = "DISCONNECTED"
-const ws_status_img_off = "/assets/room/bolt-off.svg"
-const ws_status_img_on = "/assets/room/bolt-on.svg"
-const ws_status_img = "/assets/room/bolt.svg"
+const ws_status_img_off = `${baseurl}/assets/room/bolt-off.svg`
+const ws_status_img_on = `${baseurl}/assets/room/bolt-on.svg`
+const ws_status_img = `${baseurl}/assets/room/bolt.svg`
 
 // WebSocket Connection Manager
 

@@ -8,7 +8,7 @@ function add_textbox() {
         <div id="text-box-navigation">
             <span id="text-box-title"></span>
             <button id="text-box-cancel" class="" onclick="hide_textbox()">
-                <img src="/assets/room/x.svg" alt="x"/>
+                <img src="${baseurl}/assets/room/x.svg" alt="x"/>
             </button>
         </div>
         <div id="text-box-content"></div>

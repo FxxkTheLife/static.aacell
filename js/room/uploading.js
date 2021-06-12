@@ -29,7 +29,7 @@ function uploading_file_item(filename, size) {
             <div class="uploading-file-item-progress-div">
                 <span class="uploading-file-item-progress" id="uploading-file-${md5_filename}-progress">0 %</span>
                 <button class="uploading-file-item-cancel-btn" onclick="abort_uploading_file('${md5_filename}')">
-                    <img src="/assets/room/x.circle.svg"/>
+                    <img src="${baseurl}/assets/room/x.circle.svg"/>
                 </button>
             </div>
         </div>

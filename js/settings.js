@@ -1,5 +1,7 @@
 window.onload = function () {
     add_textbox()
+
+    analytics()
 }
 
 function go_back() {

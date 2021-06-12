@@ -246,7 +246,7 @@ function update_file_list() {
     for (let file_data of all_files[curr_category]) {
         file_list.innerHTML += file_item(file_data)
     }
-    document.getElementById('content-file-tab-img').src = `/assets/room/${get_category_icon(curr_category)}`
+    document.getElementById('content-file-tab-img').src = `${baseurl}/assets/room/${get_category_icon(curr_category)}`
     document.getElementById('content-file-tab-text').textContent = curr_category === '' ? i18n['room.category-public'] : curr_category
 }
 
@@ -307,11 +307,11 @@ function file_item(json) {
             <span class="file-item-size">${size}</span>
         </div>
         <div class="file-item-btn-div">
-            <button onclick="move_file('${base64_filename}')" class="submit-btn file-item-btn-item green file-item-move-btn"><img src="/assets/room/move.svg" alt="move"/></button>
-            <button onclick="rename_file('${base64_filename}')" class="submit-btn file-item-btn-item orange file-item-rename-btn"><img src="/assets/room/pen.svg" alt="rename"/></button>
+            <button onclick="move_file('${base64_filename}')" class="submit-btn file-item-btn-item green file-item-move-btn"><img src="${baseurl}/assets/room/move.svg" alt="move"/></button>
+            <button onclick="rename_file('${base64_filename}')" class="submit-btn file-item-btn-item orange file-item-rename-btn"><img src="${baseurl}/assets/room/pen.svg" alt="rename"/></button>
 <!--            <button class="submit-btn file-item-qrcode-btn"><img src="/assets/room/qrcode.svg" alt="qrcode"/></button>-->
-            <button onclick="delete_file('${base64_filename}')" class="destroy-btn file-item-btn-item file-item-delete-btn"><img src="/assets/room/delete.svg" alt="delete"/></button>
-            <button onclick="download_file('${base64_filename}')" class="submit-btn file-item-btn-item file-item-download-btn"><img src="/assets/room/download.svg" alt="download"/></button>
+            <button onclick="delete_file('${base64_filename}')" class="destroy-btn file-item-btn-item file-item-delete-btn"><img src="${baseurl}/assets/room/delete.svg" alt="delete"/></button>
+            <button onclick="download_file('${base64_filename}')" class="submit-btn file-item-btn-item file-item-download-btn"><img src="${baseurl}/assets/room/download.svg" alt="download"/></button>
         </div>
     </li>
     `

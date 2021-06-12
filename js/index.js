@@ -2,6 +2,8 @@ debug(curr_locale)
 
 window.onload = function () {
     document.getElementById('room-id-input').focus()
+
+    analytics()
 }
 
 window.onresize = function () {

@@ -71,12 +71,12 @@ function category_item(json) {
     return `
     <li id="category-item-${base64_name}" onclick="category_item_clicked(this, '${base64_name}')" class="${name === curr_category ? 'category-selected' : ''}">
         <div class="category-title-div">
-            <img src="/assets/room/${get_category_icon(name)}"/>
+            <img src="${baseurl}/assets/room/${get_category_icon(name)}"/>
             <span>${name === '' ? i18n['room.category-public'] : htmlencode(name)}</span>
         </div>
         <div class="category-btn-div" style="${name === '' ? 'display: none;' : ''}">
-            <button><img src="/assets/room/pen.svg" class="category-rename-btn" onclick="rename_category('${base64_name}')"></button>
-            <button><img src="/assets/room/delete.svg" class="category-delete-btn" onclick="delete_category('${base64_name}')"></button>
+            <button><img src="${baseurl}/assets/room/pen.svg" class="category-rename-btn" onclick="rename_category('${base64_name}')"></button>
+            <button><img src="${baseurl}/assets/room/delete.svg" class="category-delete-btn" onclick="delete_category('${base64_name}')"></button>
         </div>
     </li>
     `

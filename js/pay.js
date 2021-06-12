@@ -1,6 +1,8 @@
 window.onload = function () {
     add_textbox()
     payment_method_i18n()
+
+    analytics()
 }
 
 function go_back() {
@@ -9,7 +11,7 @@ function go_back() {
 
 function payment_method_i18n() {
     if (curr_locale.toLowerCase() === 'zh_cn' || curr_locale.toLowerCase() === 'zh_tw') {
-        document.getElementById('pay-method-wechatpay-img').src = '/assets/pay/wechatpay/zh_CN.svg'
+        document.getElementById('pay-method-wechatpay-img').src = `${baseurl}/assets/pay/wechatpay/zh_CN.svg`
     }
 }
 
