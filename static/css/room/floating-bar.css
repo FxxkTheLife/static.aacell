@@ -1,0 +1,157 @@
+
+#floating-bar {
+    position: fixed;
+    background-color: var(--background);
+    box-shadow: 0 5px 40px 1px rgba(0, 0, 0, 0.3), var(--floating-bar-inner-shadow);
+    border-radius: 27px;
+    height: 54px;
+    z-index: 100;
+    bottom: 30px;
+    left: 50vw;
+    transform: translate(-50%, 0);
+    padding-right: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#floating-bar button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#floating-bar button span {
+    --input-file-text-max-width: 100vw;
+
+    font-size: 16px;
+    font-weight: 600;
+    max-width: var(--input-file-text-max-width);
+    margin: auto 0 auto 10px;
+    color: var(--foreground);
+    white-space: nowrap;
+    transition: max-width 0.3s, margin 0.3s, opacity 0.3s, visibility 0.3s;
+}
+
+.floating-bar-item {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    max-width: 100vw; /* fixed for Safari: https://stackoverflow.com/a/54268452/8220957 */
+    margin: 0 0 0 6px;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s, width 0.3s, max-width 0.3s, opacity 0.3s, margin 0.3s, border-radius 0.3s, visibility 0.3s;
+}
+
+.floating-bar-item.invisible {
+    opacity: 0;
+    visibility: hidden;
+    margin: 0;
+    width: 0;
+    max-width: 0;
+}
+
+.floating-bar-separator {
+    position: relative;
+    width: 2px;
+    height: 24px;
+    margin: 0 0 0 6px;
+    background-color: var(--dark-clear-blue);
+    /*background: linear-gradient(transparent, var(--blue) 50%, transparent);*/
+}
+
+.left-edge-item {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.right-edge-item {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.floating-bar-item img {
+    width: 40%;
+    height: auto;
+    color: var(--foreground);
+    filter: var(--foreground-filter);
+    /*transition: filter 0.3s;*/
+}
+
+.floating-bar-item.floating-red img {
+    color: var(--red);
+    filter: var(--red-filter);
+}
+
+.floating-bar-item.floating-green img {
+    color: var(--green);
+    filter: var(--green-filter);
+}
+
+.floating-bar-item img.fixed-height {
+    width: auto;
+    height: 40%;
+}
+
+#floating-bar button.scalable {
+    width: auto;
+    min-width: 42px;
+    padding: 0 10px;
+}
+
+#floating-bar button.scalable img {
+    width: auto;
+    height: 40%;
+}
+
+.floating-bar-item:hover {
+    background-color: var(--clear-blue);
+}
+
+.floating-bar-item.floating-red:hover {
+    background-color: var(--clear-red);
+}
+
+.floating-bar-item.floating-green:hover {
+    background-color: var(--clear-green);
+}
+
+#floating-bar button.selection {
+    background-color: var(--clear-blue);
+}
+
+#floating-bar button.selection.active {
+    background-color: var(--foreground);
+}
+
+#floating-bar button.selection img {
+    filter: var(--foreground-filter);
+}
+
+#floating-bar button.selection.active img {
+    filter: var(--white-filter);
+}
+
+
+#floating-bar #file-input-btn-img {
+    width: 16px;
+    height: 16px;
+}
+
+
+
+#file-layout-div {
+    display: flex;
+    flex-direction: row;
+    /*border-radius: 5px;*/
+    overflow: hidden;
+}
+

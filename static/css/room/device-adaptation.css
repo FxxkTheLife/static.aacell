@@ -1,0 +1,130 @@
+/*
+ * Device adaptation
+ *
+*/
+
+@media screen and (max-width: 600px),
+       screen and (max-height: 500px) {
+    #navigation-bar-logo {
+        margin-left: 20px;
+    }
+
+    #content-tabs {
+        display: block;
+    }
+
+    #file-div {
+        top: 100px;
+        width: 100%;
+        min-width: unset;
+        /*max-height: calc(100vh - 100px);*/
+    }
+
+    #file-list-wrapper {
+        width: 100%;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    /* There are no invisible property in a phone device */
+    #message-div, #message-div.invisible {
+        position: relative;
+        top: 100px;
+        right: 0;
+        width: 100%;
+        max-width: unset;
+        opacity: 1;
+    }
+
+    #chat-box-list-wrapper {
+        height: 60%;
+    }
+
+    #file-div.inactive, #message-div.inactive {
+        display: none;
+        /*height: 0;*/
+        /*overflow-y: hidden;*/
+    }
+
+    #message-div.inactive #chat-box-messaging-div-wrapper {
+        display: none;
+    }
+
+    #file-div.inactive #floating-bar {
+        display: none;
+    }
+
+    #chat-box-messaging-div-wrapper {
+        position: fixed;
+        bottom: 0;
+    }
+
+    #chat-box-list {
+        height: fit-content;
+        padding-bottom: 180px;
+        box-shadow: none;
+    }
+
+    /* floating bar */
+
+    #floating-bar #display-message-btn {
+        display: none;
+    }
+
+    #floating-bar button span.invisible {
+        /*width: 0;*/
+        max-width: 0;
+        visibility: hidden;
+        opacity: 0;
+        margin: 0;
+    }
+
+    /* menu div */
+    #menu-div {
+        width: 100%;
+        max-width: 290px;
+        height: 100%;
+        border-radius: 0;
+        box-sizing: border-box;
+        top: 0;
+        /*padding: 0 20px;*/
+        left: 0;
+        background-color: var(--background);
+        transition: left 0.3s;
+    }
+
+    .menu-item {
+        padding: 0 20px;
+    }
+
+    #menu-navigation-div {
+        display: flex;
+    }
+
+    #menu-div + #menu-div-shelter {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    #menu-div.invisible {
+        left: -100%;
+    }
+
+    #menu-div.invisible + #menu-div-shelter {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    #category-list-wrapper {
+        height: calc(100% - 160px);
+    }
+
+}
+
+@media screen and (max-height: 500px) and (min-width: 600px){
+    #chat-box-messaging-div-wrapper {
+        right: 0;
+        width: 50%;
+    }
+}
+

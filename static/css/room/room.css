@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    width: 100vw;
+    /*height: 100vh;*/
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--background);
+    transition: background-color 0.3s;
+}
+
+
+/* Universal */
+
+.navigation-div {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 0;
+}
+
+.navigation-back-btn {
+    position: relative;
+    height: 40px;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-back-btn img {
+     height: 36%;
+     width: auto;
+     filter: var(--foreground-filter);
+ }
+
+/* Tabs */
+
+#content-tabs {
+    display: none;
+    position: fixed;
+    margin: 0;
+    top: 60px;
+    height: 40px;
+    width: 100%;
+    background-color: var(--nav-background);
+    z-index: 100;
+    list-style-type: none;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#content-tabs li {
+    position: relative;
+    float: left;
+    width: calc(50% - 40px);
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 2px solid transparent;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s, border-bottom-color 0.5s;
+}
+
+#content-tabs #content-menu-tab, #content-tabs #content-uploading-tab {
+    width: 40px;
+}
+
+#content-uploading-tab-progress.invisible {
+    display: none;
+}
+
+.progress {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.progress .progress-bg {
+    width: 15px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+
+.progress .progress-bg1 {
+    right: 0;
+}
+
+.progress .progress-bg2 {
+    left: 0;
+}
+
+.progress .progress-fg {
+    position: absolute;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transform : rotate(-135deg);
+}
+
+.progress .progress-fg1 {
+    border-top: 2px solid var(--foreground);
+    border-right: 2px solid var(--foreground);
+    right: 0;
+    transform: rotate(-135deg);
+}
+
+.progress .progress-fg2{
+    border-bottom: 2px solid var(--foreground);
+    border-left: 2px solid var(--foreground);
+    left: 0;
+    transform: rotate(-135deg);
+}
+
+#content-menu-tab img {
+    width: 40%;
+    height: auto;
+    filter: var(--foreground-filter);
+}
+
+#content-uploading-tab img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: auto;
+    filter: var(--foreground-filter);
+    transform: translate(-50%, -50%);
+}
+
+#content-file-tab-img {
+    filter: var(--gray-filter);
+    height: 14px;
+    width: auto;
+    margin-right: 10px;
+    transition: filter 0.3s;
+}
+
+#content-tabs li span {
+    color: var(--gray);
+    transition: color 0.5s, border-bottom-color 0.5s;
+    font-size: 16px;
+    max-width: 80%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+
+#content-tabs li.active {
+    border-bottom: 2px solid var(--foreground);
+    box-shadow: inset 0 3px 5px 0 var(--shadow-color);
+}
+
+#content-tabs li.active #content-file-tab-img {
+    filter: var(--foreground-filter);
+}
+
+#content-tabs li.active span {
+    color: var(--foreground);
+}
+

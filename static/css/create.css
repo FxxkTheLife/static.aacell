@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    width: 100vw;
+    /*height: 100vh;*/
+}
+
+#create-room-cancel {
+    margin-right: 15px;
+}
+
+#create-room-wrapper {
+    position: relative;
+    /*top: calc(max(20vh, 100px));*/
+    width: 100%;
+}
+

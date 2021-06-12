@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    width: 100vw;
+    /*height: 100vh;*/
+}
+
+#pay-batteries-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pay-batteries-form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pay-subject-div, #pay-batteries-method {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    gap: 12.5px;
+    justify-content: center;
+}
+
+.pay-subject-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.pay-subject-item .pay-subject-content-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.pay-subject-item:hover .pay-subject-content-wrapper {
+    box-shadow: var(--shadow-off);
+}
+
+.pay-subject-item img {
+    width: auto;
+    height: auto;
+    max-width: 130px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+.pay-subject-item span {
+    font-size: 16px;
+    color: var(--blue);
+    text-align: center;
+}
+
+.pay-subject-item span.price {
+    color: var(--gray);
+}
+
+.pay-subject-item input {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.pay-subject-item input:checked + .pay-subject-content-wrapper {
+    background-color: var(--clear-foreground);
+    box-shadow: var(--shadow-on);
+}
+
+
+#payment-method-text {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--gray);
+    border-bottom: solid 3px var(--clear-gray-3);
+}
+
+#pay-batteries-method {
+    margin-top: 0;
+}
+
+#pay-batteries-method .pay-subject-item .pay-subject-content-wrapper {
+    width: 150px;
+    height: 100px;
+}
+
+#payment-submit-btn {
+    margin: 20px 0 40px 0;
+}
+

@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    width: 100vw;
+    /*height: 100vh;*/
+}
+
+#login-wrapper {
+    position: relative;
+    /*top: calc(max(20vh, 100px));*/
+    width: 100%;
+}
+
+#login-forgot-password-wrapper {
+    display: none;
+}
+
+body.admin-exists #login-forgot-password-wrapper {
+    display: flex;
+}
+
+#login-forgot-password-a {
+    outline: none;
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 14px;
+    text-decoration: underline var(--blue);
+    border: none;
+    background-color: transparent;
+}

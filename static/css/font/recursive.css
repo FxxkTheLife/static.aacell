@@ -1,0 +1,127 @@
+
+/* Recursive */
+
+/* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
+@font-face {
+    font-family: 'Recursive';
+    font-style: oblique 0deg 15deg;
+    font-weight: 300 1000;
+    font-display: swap;
+    src: url('/fonts/recursive/recursive.woff2') format('woff2');
+    /*unicode-range: U+0020-007F,U+00A9,U+2190-2193,U+2018,U+2019,U+201C,U+201D,U+2022;*/
+}
+
+/* Recursive Mono */
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 300;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 300;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 400;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Med.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 500;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-MedItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 600;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-SmBdItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 700;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 800;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-ExBdItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 900;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-Black.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 900;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-BlackItalic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: normal;
+    font-weight: 1000;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-XBlk.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Recursive Mono';
+    font-style: italic;
+    font-weight: 1000;
+    src: url('/fonts/recursive/RecursiveMonoLnrSt-XBlkItalic.woff2') format('woff2');
+}
+

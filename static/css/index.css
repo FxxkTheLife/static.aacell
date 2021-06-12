@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    width: 100vw;
+    /*height: 100vh;*/
+}
+
+#version {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+#version a {
+    margin-left: 10px;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+#version a i {
+    margin-right: 6px;
+}
+
+#i18n-select {
+    position: absolute;
+    /*width: 120px;*/
+    height: 30px;
+    font-size: 14px;
+    right: 75px;
+    top: 30px;
+    user-select: none;
+    -webkit-user-select: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: var(--blue);
+    outline: none;
+    cursor: pointer;
+    border: 0;
+}
+
+#about {
+    position: absolute;
+    text-decoration: none;
+    color: var(--blue);
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    line-height: 40px;
+    transition: box-shadow 0.5s;
+}
+
+#about img {
+    width: 100%;
+    height: 100%;
+    filter: var(--blue-filter);
+}
+
+#home-logo-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+    align-items: center;
+    /*justify-content: center;*/
+    height: 40vh;
+    background-color: transparent;
+}
+
+#home-desc-img {
+    width: auto;
+    height: 20px;
+    max-width: 80vw;
+    max-height: 4vh;
+    margin-bottom: 4vh;
+}
+
+#home-logo-img {
+    width: auto;
+    height: 100px;
+    max-width: 20vw;
+    max-height: 10vh;
+    margin-bottom: 4vh;
+}
+
+#action-wrapper, #search-bar-wrapper, #search-bar {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#action-wrapper {
+    /*height: 40vh;*/
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#search-bar-msg {
+    font-size: 16px;
+    color: #808080;
+}
+
+#search-bar-wrapper {
+    /*margin-top: calc(10vh - 20px);*/
+}
+
+#room-id-input {
+    --room-id-input-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --room-id-input-hover-shadow: 0 5px 40px rgba(0, 0, 0, 0.2);
+
+    outline-style: none;
+    text-align: center;
+    border: 0;
+    font-size: 5vh;
+    width: 100%;
+    /*max-width: 60vw;*/
+    height: 20vh;
+    border-radius: 0;
+    color: var(--blue);
+    background-color: var(--clear-light-blue);
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#room-id-input::placeholder {
+    color: var(--clear-blue-3);
+    font-size: 4vh;
+}
+
+#room-id-input::-ms-input-placeholder {
+    color: var(--clear-blue-3);
+    font-size: 4vh;
+}
+
+#search-submit-btn {
+    margin-top: 4vh;
+    font-size: 16px;
+    height: 42px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+#search-submit-btn input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+#search-submit-btn img {
+    width: 50%;
+    height: auto;
+}
+

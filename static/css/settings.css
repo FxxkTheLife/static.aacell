@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    width: 100vw;
+}
+
+#room-settings-wrapper {
+    position: relative;
+    /*top: calc(max(20vh, 100px));*/
+    width: 100%;
+}
