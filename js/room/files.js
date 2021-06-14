@@ -489,9 +489,9 @@ function move_files_in_bulk() {
         message: i18n['room.move-select-category-name'],
         options: options,
         default: curr_category,
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let value = document.getElementById('text-box-select').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let value = box.select.value
             let base64_curr_category = Base64.encode(curr_category)
             if (base64_curr_category === value) return true
             let form_data = new FormData()
@@ -505,11 +505,11 @@ function move_files_in_bulk() {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-select').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.select.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -532,9 +532,9 @@ function delete_files_in_bulk() {
         type: 'input-password',
         title: i18n['room.adminword-required'],
         message: i18n['room.delete-multiple-file-msg-before'] + selected_files.size + i18n['room.delete-multiple-file-msg-after'],
-        callback: function () {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let adminword = document.getElementById('text-box-password-input').value
+        callback: function (box) {
+            let confirm_btn = box.confirm_btn
+            let adminword = box.password_input.value
             let form_data = new FormData()
             form_data.append('filenames', JSON.stringify(Array.from(selected_files)))
             form_data.append('category', curr_category);
@@ -549,11 +549,11 @@ function delete_files_in_bulk() {
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
                         selected_files.clear()
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-password-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.password_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -585,9 +585,9 @@ function rename_file(base64_filename) {
         title: i18n['room.rename'],
         message: i18n['room.menu-input-file-name'],
         default: Base64.decode(base64_filename),
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let value = document.getElementById('text-box-text-input').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let value = box.text_input.value
             let form_data = new FormData()
             form_data.append('name', base64_filename);
             form_data.append('category', Base64.encode(curr_category));
@@ -599,11 +599,11 @@ function rename_file(base64_filename) {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-text-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.text_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -626,9 +626,9 @@ function move_file(base64_filename) {
         message: i18n['room.move-select-category-name'],
         options: options,
         default: curr_category,
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let value = document.getElementById('text-box-select').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let value = box.select.value
             let base64_curr_category = Base64.encode(curr_category)
             if (base64_curr_category === value) return true
             let form_data = new FormData()
@@ -642,11 +642,11 @@ function move_file(base64_filename) {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-select').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.text_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -664,9 +664,9 @@ function delete_file(base64_filename) {
         type: 'input-password',
         title: i18n['room.adminword-required'],
         message: i18n['room.delete-file-msg-before'] + filename + i18n['room.delete-file-msg-after'],
-        callback: function () {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let adminword = document.getElementById('text-box-password-input').value
+        callback: function (box) {
+            let confirm_btn = box.confirm_btn
+            let adminword = box.password_input.value
             let form_data = new FormData()
             form_data.append('filenames', JSON.stringify([base64_filename]))
             form_data.append('category' , curr_category)
@@ -682,11 +682,11 @@ function delete_file(base64_filename) {
                     if (json.code === 0) {
                         // delete_listed_file(filename)
                         // update_file_list()
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-password-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.password_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false

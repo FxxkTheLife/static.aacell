@@ -75,6 +75,11 @@ body {
     transition: box-shadow 0.3s, border-bottom-color 0.5s;
 }
 
+#content-tabs #content-message-tab-red-dot {
+    margin-left: 2px;
+    margin-bottom: 10px;
+}
+
 #content-tabs #content-menu-tab, #content-tabs #content-uploading-tab {
     width: 40px;
 }

@@ -150,6 +150,23 @@ function timeToString(time) {
 
 }
 
+function has_ancestor_class_or_id(child, classes=[], ids) {
+    while (child != null) {
+        if (typeof child.classList !== "undefined") {
+            for (let one_class of classes) {
+                if (child.classList.contains(one_class)) {
+                    return true
+                }
+            }
+        }
+        if (typeof child.id !== "undefined" && ids.has(child.id)) {
+            return true
+        }
+        child = child.parentNode
+    }
+    return false
+}
+
 function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url) {

@@ -5,7 +5,6 @@ let admin_exists = false
 window.onload = function (ev) {
     document.getElementById('menu-settings-btn').href = '/' + room_id + '/settings'
     document.getElementById('navigation-bar-cell-id-span').innerHTML = room_id
-    add_textbox()
     add_file_paste()
     load_local_layout()
     load_style()
@@ -55,6 +54,7 @@ function content_tab_onclick(tab) {
             document.getElementById('content-message-tab').classList.add('active')
             document.getElementById('file-div').classList.add('inactive')
             document.getElementById('message-div').classList.remove('inactive')
+            message_red_dot_off()
             break
     }
 }

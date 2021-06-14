@@ -33,7 +33,7 @@
         right: 0;
         width: 100%;
         max-width: unset;
-        opacity: 1;
+        visibility: visible;
     }
 
     #chat-box-list-wrapper {

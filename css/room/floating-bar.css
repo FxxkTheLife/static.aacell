@@ -146,6 +146,12 @@
     height: 16px;
 }
 
+#floating-bar #floating-bar-message-red-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
 
 
 #file-layout-div {

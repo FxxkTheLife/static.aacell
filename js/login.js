@@ -1,5 +1,4 @@
 window.onload = function () {
-    add_textbox()
     request_admin_exists()
     document.getElementById('login-password-input').focus()
 
@@ -52,15 +51,15 @@ function change_password() {
         type: 'input-password',
         title: i18n['login.forgot-key'],
         message: i18n['login.input-new-key'],
-        callback() {
-            let password = document.getElementById('text-box-password-input').value
+        callback(box) {
+            let password = box.password_input.value
             textbox({
                 type: 'input-password',
                 title: i18n['room.adminword-required'],
                 message: i18n['settings.administrator-authority'],
-                callback() {
-                    let confirm_btn = document.getElementById('text-box-confirm-btn')
-                    let adminword = document.getElementById('text-box-password-input').value
+                callback(box2) {
+                    let confirm_btn = box2.confirm_btn
+                    let adminword = box2.password_input.value
                     let form_data = new FormData()
                     form_data.append('adminword', adminword)
                     form_data.append('password', password)
@@ -72,9 +71,9 @@ function change_password() {
                             if (json.code === 0) {
                                 window.location.reload()
                             } else if (json.code === -1) {
-                                document.getElementById('text-box-message').textContent = json.msg
-                                document.getElementById('text-box-message').style.color = 'var(--red)'
-                                document.getElementById('text-box-password-input').classList.add('red')
+                                box2.message.textContent = json.msg
+                                box2.message.style.color = 'var(--red)'
+                                box2.password_input.classList.add('red')
                             }
                             confirm_btn.innerHTML = i18n['room.confirm']
                             confirm_btn.disabled = false

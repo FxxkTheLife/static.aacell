@@ -123,9 +123,9 @@ function create_category() {
         type: 'input',
         title: i18n['room.new-category'],
         message: i18n['room.menu-input-category-name'],
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let value = document.getElementById('text-box-text-input').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let value = box.text_input.value
             let form_data = new FormData()
             form_data.append('category', Base64.encode(value));
             post('/-/res/room/category/create', {
@@ -135,11 +135,11 @@ function create_category() {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-text-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.text_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -161,9 +161,9 @@ function rename_category(base64_category_name) {
         title: i18n['room.rename-category'],
         message: i18n['room.menu-input-category-name'],
         default: Base64.decode(base64_category_name),
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let value = document.getElementById('text-box-text-input').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let value = box.text_input.value
             let form_data = new FormData()
             form_data.append('category', base64_category_name);
             form_data.append('newname', Base64.encode(value));
@@ -174,11 +174,11 @@ function rename_category(base64_category_name) {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-text-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.text_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -195,9 +195,9 @@ function delete_category(base64_category_name) {
         type: 'input-password',
         title: i18n['room.adminword-required'],
         message: i18n['settings.administrator-authority'],
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let adminword = document.getElementById('text-box-password-input').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let adminword = box.password_input.value
             let form_data = new FormData()
             form_data.append('category', base64_category_name);
             post('/-/res/room/category/delete', {
@@ -211,11 +211,11 @@ function delete_category(base64_category_name) {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-password-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.password_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false

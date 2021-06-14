@@ -69,7 +69,7 @@ function connect(callback) {
             if (json.isDelete === false) {
                 let chat_box_list = document.getElementById('chat-box-list')
                 chat_box_list.innerHTML += message_item(json)
-                // resize_textarea(json.id)
+                message_red_dot_on()
             } else {
                 document.getElementById(`message-item-${json.id}-li`).remove()
             }

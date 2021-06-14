@@ -30,9 +30,9 @@ function save_as_file() {
         type: 'input',
         title: i18n['room.save-as-file'],
         message: i18n['room.save-as-file-desc'],
-        callback() {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let filename = document.getElementById('text-box-text-input').value
+        callback(box) {
+            let confirm_btn = box.confirm_btn
+            let filename = box.text_input.value
             let form_data = new FormData()
             form_data.append('filename', Base64.encode(filename))
             form_data.append('content', data)
@@ -47,10 +47,11 @@ function save_as_file() {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.text_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -72,9 +73,9 @@ function delete_message(id) {
         type: 'input-password',
         title: i18n['room.adminword-required'],
         message: i18n['settings.administrator-authority'],
-        callback: function () {
-            let confirm_btn = document.getElementById('text-box-confirm-btn')
-            let adminword = document.getElementById('text-box-password-input').value
+        callback: function (box) {
+            let confirm_btn = box.confirm_btn
+            let adminword = box.password_input.value
             post('/-/res/message/delete', {
                 headers: {
                     'token': window.localStorage.getItem('token'),
@@ -86,11 +87,11 @@ function delete_message(id) {
                     debug(xmlhttp.responseText)
                     let json = JSON.parse(xmlhttp.responseText)
                     if (json.code === 0) {
-                        hide_textbox()
+                        box.destroy()
                     } else if (json.code === -1) {
-                        document.getElementById('text-box-message').textContent = json.msg
-                        document.getElementById('text-box-message').style.color = 'var(--red)'
-                        document.getElementById('text-box-password-input').classList.add('red')
+                        box.message.textContent = json.msg
+                        box.message.style.color = 'var(--red)'
+                        box.password_input.classList.add('red')
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
@@ -118,6 +119,7 @@ function display_message_btn_clicked(btn) {
     if (display_message_div) {
         btn.classList.add('active')
         document.getElementById('message-div').classList.remove('invisible')
+        message_red_dot_off()
     } else {
         btn.classList.remove('active')
         document.getElementById('message-div').classList.add('invisible')
@@ -127,13 +129,21 @@ function display_message_btn_clicked(btn) {
 function close_message_click_down(target) {
     if (!display_message_div)
         return
-    if (document.getElementById('message-div').contains(target) ||
-        document.getElementById('floating-bar').contains(target) ||
-        document.getElementById('navigation-bar').contains(target) ||
-        document.getElementById('text-box-div').contains(target)
-    )
+    if (has_ancestor_class_or_id(target, ['text-box-div'], new Set(['message-div', 'floating-bar', 'navigation-bar'])))
         return;
     document.getElementById('display-message-btn').click()
+}
+
+function message_red_dot_off() {
+    document.getElementById('content-message-tab-red-dot').classList.add('invisible')
+    document.getElementById('floating-bar-message-red-dot').classList.add('invisible')
+}
+
+function message_red_dot_on() {
+    if ((is_compact_view() && current_tab !== 'messages') || (!is_compact_view() && !display_message_div)) {
+        document.getElementById('content-message-tab-red-dot').classList.remove('invisible')
+        document.getElementById('floating-bar-message-red-dot').classList.remove('invisible')
+    }
 }
 
 // get messages when login

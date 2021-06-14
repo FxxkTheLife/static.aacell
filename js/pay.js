@@ -1,5 +1,4 @@
 window.onload = function () {
-    add_textbox()
     payment_method_i18n()
 
     analytics()

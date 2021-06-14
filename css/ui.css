@@ -48,6 +48,7 @@ body {
     --clear-yellow: rgba(255, 204, 0, 0.1);
 
     --orange: rgb(255, 149, 0);
+    --orange-filter: invert(76%) sepia(31%) saturate(7305%) hue-rotate(358deg) brightness(99%) contrast(108%);
     --clear-orange: rgba(255, 149, 0, 0.1);
 
     --gray: rgb(142, 142, 147);
@@ -365,6 +366,20 @@ img.select-btn.blue.off {
 .red {
     border: 2px solid var(--red);
     background-color: var(--clear-red);
+}
+
+.red-dot {
+    background-color: var(--red);
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+}
+
+.orange-dot {
+    background-color: var(--orange);
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
 }
 
 .error {

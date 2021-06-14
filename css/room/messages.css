@@ -12,12 +12,12 @@
     align-items: center;
     justify-content: center;
     /*overflow-y: hidden;*/
-    transition: right 0.3s ease-in-out, opacity 0.3s;
+    transition: right 0.3s ease-in-out, visibility 0.3s;
 }
 
 #message-div.invisible {
     right: -50vw;
-    opacity: 0;
+    visibility: hidden;
 }
 
 
