@@ -248,13 +248,15 @@ function update_file_list() {
     }
     document.getElementById('content-file-tab-img').src = `${baseurl}/assets/room/${get_category_icon(curr_category)}`
     document.getElementById('content-file-tab-text').textContent = curr_category === '' ? i18n['room.category-public'] : curr_category
+
+    clear_all_file_selection()
 }
 
 function update_empty_hint_img() {
     if (all_files[curr_category].length === 0) {
-        document.getElementById('empty-hint-img').style.opacity = '1'
+        document.getElementById('empty-hint-div').style.opacity = '1'
     } else {
-        document.getElementById('empty-hint-img').style.opacity = '0'
+        document.getElementById('empty-hint-div').style.opacity = '0'
     }
 }
 

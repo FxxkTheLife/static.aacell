@@ -40,6 +40,11 @@
         height: 60%;
     }
 
+    #empty-hint-div {
+        left: 0;
+        width: 100vw;
+    }
+
     #file-div.inactive, #message-div.inactive {
         display: none;
         /*height: 0;*/
@@ -119,12 +124,38 @@
         height: calc(100% - 160px);
     }
 
+    /* pay */
+    .pay-subject-item img {
+        /*max-width: 60px;*/
+        max-height: 50px;
+        margin-bottom: 0;
+    }
+
+    .pay-subject-item .pay-subject-content-wrapper {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    #pay-batteries-method .pay-subject-item .pay-subject-content-wrapper {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    #pay-subject-div, #pay-batteries-method {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
 }
 
 @media screen and (max-height: 500px) and (min-width: 600px){
     #chat-box-messaging-div-wrapper {
         right: 0;
         width: 50%;
+    }
+
+    #pay-subject-div, #pay-batteries-method {
+        grid-template-columns: repeat(auto-fill, 48%);
     }
 }
 

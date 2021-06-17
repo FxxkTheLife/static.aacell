@@ -124,6 +124,11 @@ class TextBox {
         return this.type
     }
 
+    destroyed = false;
+    get destroyed() {
+        return this.destroyed
+    }
+
     div;
     get div() {
         return this.div
@@ -181,9 +186,9 @@ class TextBox {
         div.classList.add('text-box-div')
         div.innerHTML = `
         <div id="text-box-${id}-shelter" class="text-box-shelter"></div>
-        <div id="text-box-${id}" class="text-box">
+        <div id="text-box-${id}" class="text-box" style="${typeof data.width === "undefined" ? '' : 'width: ' + data.width}">
             <div id="text-box-${id}-navigation" class="text-box-navigation">
-                <span id="text-box-${id}-title" class="text-box-title">${htmlencode(data_res['title'])}</span>
+                <span id="text-box-${id}-title" class="text-box-title">${htmlencode(data_res['title'] || '')}</span>
                 <button id="text-box-${id}-cancel" class="text-box-cancel ${data_res['cancel-hidden'] || ''}" onclick="all_textbox['${id}'].destroy()">
                     <img src="${baseurl}/assets/room/x.svg" alt="x"/>
                 </button>
@@ -231,15 +236,23 @@ class TextBox {
                     }
                     content = `<select id="text-box-${this.id}-select" class="text-input">${option_html}</select>`
                     break
+                case "custom":
+                    let html = typeof data.html !== "undefined" ? data.html : ''
+                    content = html
+                    break
             }
         }
+
+        let btn_div = (typeof data.has_btn !== "undefined" && !data.has_btn) ? '' : `
+        <div id="text-box-${this.id}-btn-div" class="text-box-btn-div">
+            <button id="text-box-${this.id}-confirm-btn" class="submit-btn" onclick="all_textbox['${this.id}'].submit_btn_clicked()">${data.button_text !== undefined ? htmlencode(data.button_text) : i18n['room.confirm']}</button>
+        </div>
+        `
 
         res['content'] = `
         <span id="text-box-${this.id}-message" class="text-box-message">${data.message !== undefined ? htmlencode(data.message) : ''}</span>
         ${content}
-        <div id="text-box-${this.id}-btn-div" class="text-box-btn-div">
-            <button id="text-box-${this.id}-confirm-btn" class="submit-btn" onclick="all_textbox['${this.id}'].submit_btn_clicked()">${data.button_text !== undefined ? htmlencode(data.button_text) : i18n['room.confirm']}</button>
-        </div>
+        ${btn_div}
         `
         return res
     }
@@ -279,6 +292,9 @@ class TextBox {
     }
 
     destroy() {
+        if (this.destroyed)
+            return
+        this.destroyed = true
         this.hide()
         setTimeout(() => {
             this.div.remove()
@@ -291,5 +307,6 @@ class TextBox {
 function textbox(data={}) {
     let t = new TextBox(data)
     t.show()
+    return t
 }
 

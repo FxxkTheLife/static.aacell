@@ -107,6 +107,9 @@
 }
 
 #battery-status {
+    outline: none;
+    cursor: pointer;
+    border: none;
     background-color: var(--clear-gray);
     color: var(--gray);
     display: flex;

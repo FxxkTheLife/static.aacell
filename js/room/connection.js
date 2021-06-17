@@ -55,6 +55,8 @@ function ws_connection_change(new_status) {
 }
 
 function connect(callback) {
+    if (ws_status !== 'DISCONNECTED')
+        return
     ws_connection_change("CONNECTING")
     ws_connect( function (stompClient) {
         ws_connection_change("CONNECTED")
@@ -82,7 +84,7 @@ function connect(callback) {
                 if (typeof all_files[category] === "undefined")
                     all_files[category] = []
                 add_file(json)
-                document.getElementById('empty-hint-img').style.opacity = '0'
+                update_empty_hint_img()
             } else if (json.state === 'delete') {
                 delete_listed_file(json.name, json.category)
             } else if (json.state === 'rename') {
@@ -135,12 +137,22 @@ function connect(callback) {
         stompClient.subscribe('/topic/info/' + room_id, function (data) {
             let json = JSON.parse(data.body)
             debug("ws from: " + json)
-            if (json.user !== null) {
+            if (json.user !== null && json.user !== 0) {
                 let user_count = document.getElementById('user-count-value')
                 user_count.innerHTML = json.user
             }
             if (json.battery !== null && json.birth !== null) {
-                update_battery(json.battery, json.birth)
+                update_battery(json.birth, json.battery)
+            }
+            if (json.order_id !== null && json.order_id === payment_order_id) {
+                payment_boxes.forEach(box => {
+                    box.destroy()
+                })
+                textbox({
+                    type: 'text',
+                    title: '支付成功',
+                    message: '您已支付成功，感谢支持 / locale'
+                })
             }
 
             data.ack()

@@ -68,8 +68,10 @@ body {
     --clear-foreground: var(--clear-blue);
     --foreground-filter: var(--blue-filter);
 
-    --shadow-off: 0 5px 20px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 0 var(--clear-blue-3);
-    --shadow-on: 0 0 0 0 rgba(0, 0, 0, 0.2), inset 0 5px 20px 1px var(--clear-blue-3);
+    /*--shadow-off: 0 5px 20px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 0 var(--clear-blue-3);*/
+    /*--shadow-on: 0 0 0 0 rgba(0, 0, 0, 0.2), inset 0 5px 20px 1px var(--clear-blue-3);*/
+    --shadow-off: none;
+    --shadow-on: none;
 
     --no-shadow-bulge: inset 0 0 0 0 #d1d9e6, inset 0 0 0 0 #ffffff;
     --shadow-bulge: inset -1px -1px 3px 0 #d1d9e6, inset 1px 1px 3px 0 #ffffff;
@@ -105,12 +107,16 @@ body {
     --nav-background: var(--light-gray);
 
     --file-item-background-on: var(--clear-blue);
+    --file-item-hover-background: var(--clear-blue);
+    --file-item-padding: 10px;
+    --file-item-border-off: 4px solid transparent;
+    --file-item-border-on: 4px solid var(--light-blue);
 
-    --switch-item-background-on: var(--foreground);
-    --switch-item-background-off: var(--clear-foreground);
-    --switch-item-foreground-on: var(--background);
+    --switch-item-background-on: var(--clear-foreground);
+    --switch-item-background-off: transparent;
+    --switch-item-foreground-on: var(--foreground);
     --switch-item-foreground-off: var(--foreground);
-    --switch-item-foreground-filter-on: var(--background-filter);
+    --switch-item-foreground-filter-on: var(--foreground-filter);
     --switch-item-foreground-filter-off: var(--foreground-filter);
     --switch-item-shadow-on: none;
     --switch-item-shadow-off: none;
@@ -128,6 +134,10 @@ body.style-neumorphic {
     --nav-background: var(--background);
 
     --file-item-background-on: #f9fafb;
+    --file-item-hover-background: transparent;
+    --file-item-padding: 14px;
+    --file-item-border-off: 0 solid transparent;
+    --file-item-border-on: 0 solid transparent;
 
     --switch-item-background-on: var(--background);
     --switch-item-background-off: var(--background);

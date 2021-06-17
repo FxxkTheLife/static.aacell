@@ -111,7 +111,6 @@ function category_item_clicked(item, base64_name) {
         ele.classList.remove('category-selected')
     })
     item.classList.add('category-selected')
-    clear_all_file_selection()
     curr_category = name
     sort_files()
     update_file_list()

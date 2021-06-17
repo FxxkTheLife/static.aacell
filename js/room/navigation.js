@@ -52,6 +52,7 @@ function request_navigation_info() {
         headers: {'token': window.localStorage.getItem('token'), 'roomid': room_id},
         success: function (xmlhttp) {
             let data = JSON.parse(xmlhttp.responseText).data
+            debug(data)
             let birthtime = data['birth']
             let user_count = document.getElementById('user-count-value')
             user_count.innerHTML = data['user']
@@ -62,6 +63,7 @@ function request_navigation_info() {
 }
 
 function update_battery(birthtime, battery_count) {
+    debug(`birthtime: ${birthtime}, battery_count: ${battery_count}`)
     let now = new Date().getTime()
     let battery_change_remain = (birthtime + 604800 * 1000 * battery_count - now) % (6048 * 1000)
     battery = Math.floor((birthtime + 604800 * 1000 * battery_count - now) / (6048 * 1000)) + 1

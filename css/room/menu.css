@@ -273,6 +273,10 @@ body.admin-exists #category-list li.category-selected .category-btn-div {
     padding: 6px 14px;
     font-size: 16px;
     height: auto;
+    background-color: var(--clear-blue);
+    border: solid 2px transparent;
+    color: var(--blue);
+    font-weight: 500;
     flex-shrink: 0;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
