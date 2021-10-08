@@ -515,6 +515,11 @@ function move_files_in_bulk() {
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
+                },
+                error: function (xmlhttp) {
+                    if (xmlhttp.status === 401) {
+                        window.location.reload()
+                    }
                 }
             })
             confirm_btn.innerHTML = i18n['room.please-wait']
@@ -609,6 +614,11 @@ function rename_file(base64_filename) {
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
+                },
+                error: function (xmlhttp) {
+                    if (xmlhttp.status === 401) {
+                        window.location.reload()
+                    }
                 }
             })
             confirm_btn.innerHTML = i18n['room.please-wait']
@@ -652,6 +662,11 @@ function move_file(base64_filename) {
                     }
                     confirm_btn.innerHTML = i18n['room.confirm']
                     confirm_btn.disabled = false
+                },
+                error: function (xmlhttp) {
+                    if (xmlhttp.status === 401) {
+                        window.location.reload()
+                    }
                 }
             })
             confirm_btn.innerHTML = i18n['room.please-wait']
