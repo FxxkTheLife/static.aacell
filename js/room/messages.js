@@ -7,6 +7,11 @@ function send() {
     if (data.length === 0) {
         return
     }
+    if (ws_status == "DISCONNECTED" || ws_status == "CONNECTING" || ws_status == "DISCONNECTING"){
+        ws_show_reconnect_textbox()
+        return;
+    }
+    debug(data.length)
     if (data.length > 1000 || Base64.encode(data).length > 1000) {
         textbox({
             type: 'text',
@@ -69,6 +74,45 @@ function save_as_file() {
 }
 
 function delete_message(id) {
+    if (!admin_exists){
+        textbox({
+            type: 'text',
+            title: i18n['room.delete'],
+            message: i18n['room.delete-message-whether'],
+            callback: function (box) {
+                let confirm_btn = box.confirm_btn
+                post('/-/res/message/delete', {
+                    headers: {
+                        'token': window.localStorage.getItem('token'),
+                        'roomid': room_id,
+                        'messageid': id,
+                    },
+                    success(xmlhttp) {
+                        debug(xmlhttp.responseText)
+                        let json = JSON.parse(xmlhttp.responseText)
+                        if (json.code === 0) {
+                            box.destroy()
+                        } else if (json.code === -1) {
+                            box.message.textContent = json.msg
+                            box.message.style.color = 'var(--red)'
+                        }
+                        confirm_btn.innerHTML = i18n['room.confirm']
+                        confirm_btn.disabled = false
+                    },
+                    error(xmlhttp) {
+                        if (xmlhttp.status === 401) {
+                            window.location.reload()
+                        }
+                    }
+                })
+                confirm_btn.innerHTML = i18n['room.please-wait']
+                confirm_btn.disabled = true
+                return false
+            }
+        })
+        return;
+    }
+
     textbox({
         type: 'input-password',
         title: i18n['room.adminword-required'],

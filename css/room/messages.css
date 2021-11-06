@@ -115,10 +115,6 @@
 }
 
 #chat-box-list .message-delete-btn {
-    display: none;
-}
-
-.admin-exists #chat-box-list .message-delete-btn {
     display: inline-block;
 }
 

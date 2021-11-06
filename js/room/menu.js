@@ -190,6 +190,42 @@ function rename_category(base64_category_name) {
 }
 
 function delete_category(base64_category_name) {
+    let category_name = Base64.decode(base64_category_name)
+    if (!admin_exists){
+        textbox({
+            type: 'text',
+            title: i18n['room.delete'],
+            message: i18n['room.category-delete-whether-before'] + category_name + i18n['room.category-delete-whether-after'],
+            callback(box) {
+                let confirm_btn = box.confirm_btn
+                let form_data = new FormData()
+                form_data.append('category', base64_category_name);
+                post('/-/res/room/category/delete', {
+                    headers: {
+                        'token': window.localStorage.getItem('token'),
+                        'roomid': room_id,
+                    },
+                    body: form_data,
+                    success(xmlhttp) {
+                        debug(xmlhttp.responseText)
+                        let json = JSON.parse(xmlhttp.responseText)
+                        if (json.code === 0) {
+                            box.destroy()
+                        } else if (json.code === -1) {
+                            box.message.textContent = json.msg
+                            box.message.style.color = 'var(--red)'
+                        }
+                        confirm_btn.innerHTML = i18n['room.confirm']
+                        confirm_btn.disabled = false
+                    }
+                })
+                confirm_btn.innerHTML = i18n['room.please-wait']
+                confirm_btn.disabled = true
+            }
+        })
+        return;
+    }
+
     textbox({
         type: 'input-password',
         title: i18n['room.adminword-required'],

@@ -19,22 +19,26 @@ function ws_connection_btn_clicked() {
     }
 }
 
+function ws_show_reconnect_textbox(){
+    textbox({
+        type: 'text',
+        title: i18n['room.room-disconnected'],
+        message: i18n['room.textbox_disconnect_content'],
+        button_text: i18n['room.textbox_reconnect'],
+        callback: function () {
+            connect()
+            return true
+        }
+    })
+    document.getElementById('ws-connect-status-img').classList.remove('ws-connecting')
+
+}
 function ws_connection_change(new_status) {
     switch (new_status) {
         case "DISCONNECTED":
             ws_status = "DISCONNECTED"
             document.getElementById('ws-connect-status-img').src = ws_status_img_off
-            textbox({
-                type: 'text',
-                title: i18n['room.room-disconnected'],
-                message: i18n['room.textbox_disconnect_content'],
-                button_text: i18n['room.textbox_reconnect'],
-                callback: function () {
-                    connect()
-                    return true
-                }
-            })
-            document.getElementById('ws-connect-status-img').classList.remove('ws-connecting')
+            ws_show_reconnect_textbox()
             break
         case "CONNECTED":
             ws_status = "CONNECTED"

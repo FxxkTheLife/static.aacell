@@ -242,7 +242,7 @@ body.style-neumorphic #category-list-wrapper {
         box-shadow: var(--menu-item-shadow-off);
     }
 
-    body.admin-exists #category-list li:hover .category-btn-div {
+    #category-list li:hover .category-btn-div {
         opacity: 1;
     }
 }
@@ -253,7 +253,7 @@ body.style-neumorphic #category-list-wrapper {
     color: var(--foreground);
 }
 
-body.admin-exists #category-list li.category-selected .category-btn-div {
+#category-list li.category-selected .category-btn-div {
     opacity: 1;
 }
 

@@ -258,10 +258,6 @@
 }
 
 .file-list li .file-item-delete-btn {
-    display: none;
-}
-
-body.admin-exists .file-list li .file-item-delete-btn {
     display: flex;
 }
 

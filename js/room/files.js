@@ -535,16 +535,60 @@ function delete_files_in_bulk() {
         return
     }
 
+    if (!admin_exists){
+        textbox({
+            type: 'text',
+            title: i18n['room.delete'],
+            message: i18n['room.delete-multiple-file-msg-before'] + selected_files.size + i18n['room.delete-multiple-file-msg-after'],
+            callback: function (box) {
+                let confirm_btn = box.confirm_btn
+                let form_data = new FormData()
+                form_data.append('filenames', JSON.stringify(Array.from(selected_files)))
+                form_data.append('category', curr_category);
+
+                post('/-/res/file/delete', {
+                    headers: {
+                        'token': window.localStorage.getItem('token'),
+                        'roomid': room_id,
+                    },
+                    body: form_data,
+                    success: function (xmlhttp) {
+                        let json = JSON.parse(xmlhttp.responseText)
+                        if (json.code === 0) {
+                            selected_files.clear()
+                            box.destroy()
+                        } else if (json.code === -1) {
+                            box.message.textContent = json.msg
+                            box.message.style.color = 'var(--red)'
+                        }
+                        confirm_btn.innerHTML = i18n['room.confirm']
+                        confirm_btn.disabled = false
+                    },
+                    error(xmlhttp) {
+                        if (xmlhttp.status === 401) {
+                            window.location.reload()
+                        }
+                    }
+                })
+                confirm_btn.innerHTML = i18n['room.please-wait']
+                confirm_btn.disabled = true
+                return false
+            }
+        })
+        return;
+    }
+
     textbox({
         type: 'input-password',
         title: i18n['room.adminword-required'],
-        message: i18n['room.delete-multiple-file-msg-before'] + selected_files.size + i18n['room.delete-multiple-file-msg-after'],
+        message: i18n['room.delete-multiple-file-msg-before-admin'] + selected_files.size + i18n['room.delete-multiple-file-msg-after-admin'],
         callback: function (box) {
             let confirm_btn = box.confirm_btn
             let adminword = box.password_input.value
             let form_data = new FormData()
             form_data.append('filenames', JSON.stringify(Array.from(selected_files)))
             form_data.append('category', curr_category);
+
             post('/-/res/file/delete', {
                 headers: {
                     'token': window.localStorage.getItem('token'),
@@ -677,6 +721,50 @@ function move_file(base64_filename) {
 
 function delete_file(base64_filename) {
     let filename = Base64.decode(base64_filename)
+
+    if (!admin_exists){
+        textbox({
+            type: 'text',
+            title: i18n['room.delete'],
+            message: i18n['room.delete-file-msg-before'] + filename + i18n['room.delete-file-msg-after'],
+            callback: function (box) {
+                let confirm_btn = box.confirm_btn
+                let form_data = new FormData()
+                form_data.append('filenames', JSON.stringify([base64_filename]))
+                form_data.append('category' , curr_category)
+
+                post('/-/res/file/delete', {
+                    headers: {
+                        'token': window.localStorage.getItem('token'),
+                        'roomid': room_id,
+                    },
+                    body: form_data,
+                    success: function (xmlhttp) {
+                        let json = JSON.parse(xmlhttp.responseText)
+                        if (json.code === 0) {
+                            selected_files.clear()
+                            box.destroy()
+                        } else if (json.code === -1) {
+                            box.message.textContent = json.msg
+                            box.message.style.color = 'var(--red)'
+                        }
+                        confirm_btn.innerHTML = i18n['room.confirm']
+                        confirm_btn.disabled = false
+                    },
+                    error(xmlhttp) {
+                        if (xmlhttp.status === 401) {
+                            window.location.reload()
+                        }
+                    }
+                })
+                confirm_btn.innerHTML = i18n['room.please-wait']
+                confirm_btn.disabled = true
+                return false
+            }
+        })
+        return;
+    }
+
     textbox({
         type: 'input-password',
         title: i18n['room.adminword-required'],
