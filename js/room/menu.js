@@ -36,6 +36,34 @@ function menu_close_clicked() {
 }
 
 
+function receive_category(data) {
+    let json = JSON.parse(data.body)
+    let category_name = json.name
+    if (json.state === 'add') {
+        all_categories.push(json)
+        if (typeof all_files[category_name] === "undefined")
+            all_files[category_name] = []
+        document.getElementById('category-list').innerHTML += category_item(json)
+    } else if (json.state === 'delete') {
+        delete_listed_category(category_name)
+    } else if (json.state === 'rename') {
+        let prev_name = json['prevName']
+        if (curr_category === prev_name)
+            curr_category = json.name
+
+        // all_categories
+        let index = all_categories.findIndex(ele => { return ele.name === prev_name })
+        if (index === -1) return
+        all_categories[index] = json
+
+        // all_files
+        all_files[category_name] = all_files[prev_name]
+
+        let base64_prev_name = Base64.encode(prev_name)
+        document.getElementById(`category-item-${base64_prev_name}`).outerHTML = category_item(json)
+    }
+}
+
 function request_category() {
     get('/-/res/room/categories', {
         headers: {'token': window.localStorage.getItem('token'), 'roomid': room_id},

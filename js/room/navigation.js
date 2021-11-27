@@ -6,6 +6,30 @@ function go_back() {
     window.location.href = "/"
 }
 
+// Subscribe
+
+function receive_navigation_info(data) {
+    let json = JSON.parse(data.body)
+    debug("ws from: " + json)
+    if (json.user !== null && json.user !== 0) {
+        let user_count = document.getElementById('user-count-value')
+        user_count.innerHTML = json.user
+    }
+    if (json.battery !== null && json.birth !== null) {
+        update_battery(json.birth, json.battery)
+    }
+    if (json.order_id !== null && json.order_id === payment_order_id) {
+        payment_boxes.forEach(box => {
+            box.destroy()
+        })
+        textbox({
+            type: 'text',
+            title: '支付成功',
+            message: '您已支付成功，感谢支持 / locale'
+        })
+    }
+}
+
 // Share
 
 let qrcode;

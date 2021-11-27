@@ -24,7 +24,6 @@ function go_enter() {
         success: function (xmlhttp) {
             let json = JSON.parse(xmlhttp.responseText)
             if (json.code === 0) {
-                window.localStorage.setItem('token', json.data)
                 window.location.reload()
             } else if (json.code === -1) {
                 document.getElementById('error-message').innerText = json.msg

@@ -2,7 +2,9 @@ var stompClient = null;
 
 function ws_connect(connectCallback, errorCallback, closeEventCallback) {
     //var socket = new WebSocket('wss://aacell.me/socket/connect/websocket')
-    var socket = new SockJS('/socket/connect')
+
+    var socket = new SockJS('/socket/connect/?roomid=' + room_id + '&token=' + encodeURIComponent(window.localStorage.getItem('token')))
+
     // stompClient = Stomp.client('ws://localhost:8888/socket/connect')
     stompClient = Stomp.over(socket)
 
@@ -12,7 +14,7 @@ function ws_connect(connectCallback, errorCallback, closeEventCallback) {
             connectCallback(stompClient)
         }
     }, errorCallback, closeEventCallback)
-    // stompClient.ws.bufferedAmount
+    stompClient.ws.bufferedAmount
 }
 
 function ws_disconnect(disconnectCallback) {

@@ -2,6 +2,17 @@
 
 let messages = {}
 
+function receive_message(data) {
+    let json = JSON.parse(data.body)
+    if (json.isDelete === false) {
+        let chat_box_list = document.getElementById('chat-box-list')
+        chat_box_list.innerHTML += message_item(json)
+        message_red_dot_on()
+    } else {
+        document.getElementById(`message-item-${json.id}-li`).remove()
+    }
+}
+
 function send() {
     let data = document.getElementById('chat-box-textarea').value
     if (data.length === 0) {

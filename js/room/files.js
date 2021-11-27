@@ -154,6 +154,36 @@ function select_all_files() {
 }
 
 
+// subscribe
+
+function receive_file(data) {
+    let json = JSON.parse(data.body)
+    if (json.state === 'add') {
+        let category = json.category
+        if (typeof all_files[category] === "undefined")
+            all_files[category] = []
+        add_file(json)
+        update_empty_hint_img()
+    } else if (json.state === 'delete') {
+        delete_listed_file(json.name, json.category)
+    } else if (json.state === 'rename') {
+        let category = json.category
+        let prev_name = json['prevName']
+
+        if (typeof all_files[category] === "undefined")
+            all_files[category] = []
+        let index = all_files[category].findIndex(ele => { return ele.name === prev_name })
+        if (index === -1) return
+        all_files[category][index] = json
+
+        if (category === curr_category) {
+            let base64_prevName = Base64.encode(json['prevName'])
+            let item = document.getElementById(`file-item-${base64_prevName}`)
+            item.outerHTML = file_item(json)
+        }
+    }
+}
+
 // get files when login
 
 function request_file() {
