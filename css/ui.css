@@ -1,11 +1,11 @@
 h1, h2, h3, p, a, input, label, select, option, button, span, ul, ol, li, div {
-    font-family: Poppins;
+    font-family: Poppins, -apple-system, system-ui, sans-serif;
     font-size: 14px;
     font-weight: 400;
 }
 
 textarea {
-    font-family: 'Recursive Mono';
+    font-family: 'Recursive Mono', -apple-system, system-ui, monospace;
     font-size: 14px;
     font-weight: 500;
     font-style: normal;

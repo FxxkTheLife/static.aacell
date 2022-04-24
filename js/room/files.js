@@ -481,6 +481,14 @@ function send_file(file) {
         success: function (xmlhttp) {
             debug(xmlhttp.responseText)
             remove_uploading_file(md5(file.name))
+            let json = JSON.parse(xmlhttp.responseText)
+            if (json.code === -1) {
+                textbox({
+                    type: 'no-cancel',
+                    title: i18n['room.file-upload-fail'],
+                    message: json.msg,
+                })
+            }
         },
         error: function (xmlhttp) {
             if (xmlhttp.status === 401 || xmlhttp.status === 301) {

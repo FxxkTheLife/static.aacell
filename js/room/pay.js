@@ -101,7 +101,6 @@ var payment_boxes = []
 
 
 function make_payment() {
-
     if (document.getElementById('pay-batteries-wrapper') != null)
         return
 
@@ -165,7 +164,42 @@ function make_payment() {
     })
 }
 
+function add_battery() {
+    if (document.getElementById('pay-batteries-wrapper') != null)
+        return
 
+    let form_data = new FormData()
+
+    post('/-/res/room/battery/add', {
+        headers: {'token': window.localStorage.getItem('token'), 'roomid': room_id},
+        body: form_data,
+        success(xmlhttp) {
+            debug(xmlhttp.responseText)
+            let json = JSON.parse(xmlhttp.responseText)
+            if (json.code === 0) {
+                textbox({
+                    type: 'no-cancel',
+                    title: i18n['room.menu-charge'],
+                    message: json.msg,
+                    callback(box) {
+                        box.destroy()
+                    }
+                })
+            } else if (json.code === -1) {
+                textbox({
+                    type: 'no-cancel',
+                    title: i18n['room.menu-charge'],
+                    message: json.msg,
+                    callback(box) {
+                        box.destroy()
+                    }
+                })
+            }
+        }
+    })
+
+
+}
 
 function pay(subject_item, method, success=function (){}, fail=function (){}) {
 
